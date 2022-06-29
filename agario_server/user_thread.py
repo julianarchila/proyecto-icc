@@ -1,9 +1,6 @@
 # Utils
-from socket import socket
-import random, sys
-from time import time
-import time
 import json
+import random
 
 import websockets
 
@@ -17,10 +14,6 @@ from server_state import STATE
 
 
 async def user_thread(conn):
-    """
-    Every connection runs in a new thread where
-    all the interactions with the server are handled
-    """
 
     if not (STATE.start):
         STATE.start = True

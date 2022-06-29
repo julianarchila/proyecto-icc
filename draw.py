@@ -5,7 +5,6 @@ from game_state import STATE
 
 def draw_players(screen):
     for p in sorted(STATE.users.values(), key=operator.itemgetter("score")):
-        #     pygame.draw.circle(screen, YELLOW, (posx,posy), playerrad)
         pygame.draw.circle(
             screen,
             p["color"],
@@ -31,11 +30,6 @@ def draw_scoreboard(screen):
 
 
 
-def draw_time(screen):
-    pass
-
-
-# pinta la pantalla de blanco y dibuja los jugadores
 def redraw_window(screen):
     screen.fill(COLORS.white)
 

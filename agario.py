@@ -41,30 +41,6 @@ def main(name):
             vel = 10
 
 
-        ### MOUSE HANDLER ###
-        # dX, dY = pygame.mouse.get_pos()
-        # # Find the angle from the center of the screen to the mouse in radians [-Pi, Pi]
-        # rotation = math.atan2(
-        #     dY - float(WIN_H) / 2, dX - float(WIN_W) / 2
-        # )
-        # # Convert radians to degrees [-180, 180]
-        # rotation *= 180 / math.pi
-        # # Normalize to [-1, 1]
-        # # First project the point from unit circle to X-axis
-        # # Then map resulting interval to [-1, 1]
-        # normalized = (90 - math.fabs(rotation)) / 90
-        # vx = vel * normalized
-        # vy = 0
-        # if rotation < 0:
-        #     vy = - vel + math.fabs(vx)
-        # else:
-        #     vy = vel - math.fabs(vx)
-        # tmpX = current_user["x"] + vx
-        # tmpY = current_user["x"] + vy
-        # current_user["x"] = tmpX
-        # current_user["x"] = tmpY
-
-
         keys = pygame.key.get_pressed()
         PLAYER_RADIUS = current_user["r"]
         if keys[pygame.K_LEFT] or keys[pygame.K_a]:
@@ -84,7 +60,6 @@ def main(name):
                 current_user["y"] = current_user["y"] + vel
 
 
-        # data = "move " + str(current_user["x"]) + " " + str(current_user["y"])
         send_data = {
             "cmd": "move",
             "x": current_user["x"],

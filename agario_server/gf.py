@@ -5,10 +5,6 @@ from constants import WIN_H, WIN_W, B_N
 from server_state import STATE
 
 def gen_start_location(r):
-    """ 
-    generates a random location and checks if it's not overlapping
-    with any of the players or balls. if it is, it generates a new location
-    """
     x = random.randint(0, WIN_W)
     y = random.randint(0, WIN_H)
     while True:
@@ -64,13 +60,6 @@ def serialize_state() -> dict:
 
 
 def check_collision():
-    """
-    checks if any of the player have collided with any of the balls
-
-    :param players: a dictonary of players
-    :param balls: a list of balls
-    :return: None
-    """
     for _, p in STATE.users.items():
         for ball in STATE.balls:
             dis = calc_distance(p.x, p.y, ball.x, ball.y)
@@ -83,12 +72,6 @@ def check_collision():
 
 
 def player_collision():
-    """
-    checks for player collision and handles that collision
-
-    :param players: dict
-    :return: None
-    """
     sort_players = sorted(STATE.users.values(), key=operator.attrgetter('score'))
     for x, player1 in enumerate(sort_players):
         for player2 in sort_players[x+1:]:
@@ -106,6 +89,3 @@ def player_collision():
                 STATE.users[player1.id].x, STATE.users[player1.id].y = gen_start_location(STATE.users[player1.id].r)
                 print(f"[GAME] " + STATE.users[player2.id].name + " ATE " + STATE.users[player1.id].name)
 
-
-def new_check_player_collision():
-    sorted_players = sorted(STATE.users.values(), key=operator.attrgetter('score'))

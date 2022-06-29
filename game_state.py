@@ -1,5 +1,4 @@
 
-from mocks import users, balls
 class STATE:
     current_id = ""
     score = 0
